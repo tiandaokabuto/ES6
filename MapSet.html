@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MapSet数据类型</title>
+</head>
+<body>
+  <script>
+    /*
+    * map与对象不同的是键值对可以是任何类型
+    * 
+    */
+    const map1 = new Map();
+    const key1 = 'this is the key1',
+          key2 = {},
+          key3 = function () {};
+    map1.set(key1, "value1");
+    map1.set(key2, "value2");
+    map1.set(key3, "value3")
+    // console.log(map1)
+    // console.log(map1.size)
+    // console.log(map1.get(key2))
+    // for (let [key, value] of map1) {
+    //   console.log(`${key},${value}`);
+    // }
+    // for (let key of map1.keys()) {
+    //   console.log(key)
+    // }
+    // for (let value of map1.values()) {
+    //   console.log(value)
+    // }
+    // forEach遍历
+    map1.forEach((key, value) => {
+      console.log(`${key},${value}`)
+    })
+    // map1转化为正常数组
+    const mapArr = Array.from(map1)
+    console.log(mapArr)
+    const keyArr = Array.from(map1.keys())
+    console.log(keyArr)
+    const valueArr = Array.from(map1.values())
+    console.log(valueArr)
+
+    /*
+    * Set是集合，可以存储任何数据类型，但是不能存重复的值
+    */
+    const set1 = new Set()
+    set1.add(100)
+    set1.add({ name: 'mike'})
+    set1.add(function () {})
+    set1.add("1")
+    set1.add(1)
+    set1.add(100)
+    console.log(set1)
+    const set2 = new Set([1, 2, {}, "str"])
+    console.log(set2)
+    console.log(set1.has(100))
+    console.log(set1.has({ name: 'mike'})) // 对象比较的是地址，他们不是相同的对象
+    for (let item of set1) {
+      console.log(item)
+    }
+    // set转换为数组
+    const setArr = Array.from(set1)
+    console.log(setArr)
+  </script>
+</body>
+</html>

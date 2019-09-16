@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Iterator</title>
+</head>
+
+<body>
+  <script>
+    // 具有[Symbol.iterator]属性的对象，都可以一键生成一个Iterator对象
+    // 原生具有[Symbol.iterator]属性数据类型有：
+    // 数组、某些类似数组的对象（如arguments、NodeList）、Set和Map
+    console.log(Array.prototype.slice)  // [Function: slice]
+    console.log(Array.prototype[Symbol.iterator])  // [Function: values]
+
+    const arr = [1, 2, 3]
+    const iterator = arr[Symbol.iterator]()
+    console.log(iterator.next())  // { value: 100, done: false }
+    console.log(iterator.next())  // { value: 200, done: false }
+    console.log(iterator.next())  // { value: 300, done: false }
+    console.log(iterator.next())  // { value: undefined, done: true }
+    for (let i of iterator) {
+      console.log(i)
+    }
+  </script>
+</body>
+
+</html>

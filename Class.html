@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // ES5
+    // function Car (o) {
+    //   this.title = o.title;
+    // }
+    // Car.prototype.drive = function () {
+    //   return "running";
+    // }
+
+    // let car = new Car({ title: 'Toyota'});
+    // console.log(car.drive())
+
+    // function BMW (o) {
+    //   Car.call(this,o) // 继承
+    //   this.color = o.color
+    // }
+    // BMW.prototype = Object.create(Car.prototype) // 继承方法
+    // BMW.prototype.constructor = BMW // 构造函数修改回原来的BMW
+    // let bmw = new BMW({ title: 'BMW', color: 'red'})
+    // console.log(bmw)
+
+    // ES6
+    class Car {
+      constructor (o) {
+        this.title = o.title
+      }
+      drive () {
+        return "running"
+      }
+    }
+    let car = new Car({ title: "Toyota"})
+    console.log(car.drive())
+
+    class BMW extends Car{
+      constructor (o) {
+        super(o)
+        this.color = o.color
+      }
+      look () {
+        return this.color
+      }  
+    }
+    let bmw = new BMW({ title: 'title', color: 'red'})
+    console.log(bmw.drive(), bmw.look())
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Generator生成器</title>
+</head>
+
+<body>
+  <script>
+    // Genarator不是函数
+    // Hello()执行之后会马上暂停，调用next()才会开始执行
+    // 遇到yield会执行后面的表达式,并返回执行后的值,然后再次暂停
+    // 遇到yield,返回的对象中done为false; 遇到return,返回的对象中done为true
+    // 调用next()返回的对象形式是{value: ,done: }
+    function* Hello() {
+      yield 100
+      yield (function () { return 200 })()
+      return 300
+    }
+
+    var h = Hello()
+    console.log(typeof h)  // object
+
+    console.log(h.next())  // { value: 100, done: false }
+    console.log(h.next())  // { value: 200, done: false }
+    console.log(h.next())  // { value: 300, done: true }
+    console.log(h.next())  // { value: undefined, done: true }
+
+    console.log(Array.prototype.slice)  // [Function: slice]
+    console.log(Array.prototype[Symbol.iterator])  // [Function: values]
+
+    //
+  </script>
+</body>
+
+</html>
